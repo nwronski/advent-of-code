@@ -7,7 +7,7 @@ const readFileAsync = promisify(readFile);
 export type SolutionFunc = (contents: string) => Record<string, unknown>;
 
 async function run(day: string) {
-  const { solution } = await import(`./day-${day}.ts`) as { solution: SolutionFunc; };
+  const { solution } = await import(`./day-${day}`) as { solution: SolutionFunc; };
   const contents = await readFileAsync(resolve(`./input/day-${day}.txt`), 'utf-8');
   return solution(contents.trim());
 }
