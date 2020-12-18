@@ -407,8 +407,11 @@ __metadata:
     chai: ^4.2.0
     eslint: ^7.15.0
     eslint-plugin-nwronski: ^3.1.1
+    esm: ^3.2.25
     glob: ^7.1.6
+    js-combinatorics: ^1.4.5
     ts-node-dev: ^1.1.1
+    tslib: ^2.0.3
     tslint: ^6.1.3
     typescript: ^4.1.2
   languageName: unknown
@@ -1422,6 +1425,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esm@npm:^3.2.25":
+  version: 3.2.25
+  resolution: "esm@npm:3.2.25"
+  checksum: 12a0272aaa15ce4bc07e52cbb66d471cf56ad81ad1a3c1d9f6fa1e29e8c2712716333825e2572f9dbdfdc787e5717a75cb00ce2846e2a50e2bba6971c24402f3
+  languageName: node
+  linkType: hard
+
 "espree@npm:^7.3.0":
   version: 7.3.0
   resolution: "espree@npm:7.3.0"
@@ -2029,6 +2039,13 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"js-combinatorics@npm:^1.4.5":
+  version: 1.4.5
+  resolution: "js-combinatorics@npm:1.4.5"
+  checksum: b7020fc58560561db6c36941ae741b649abc7882f8ddad411bf02cf801a49f371cfeb2e9575f110e8d1b87174549261fed5b87fd001449349a108b12940b10b2
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -2271,7 +2288,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^3.0.4":
+"minimatch@npm:*, minimatch@npm:^3.0.4":
   version: 3.0.4
   resolution: "minimatch@npm:3.0.4"
   dependencies:
@@ -3408,6 +3425,13 @@ fsevents@~2.1.2:
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: f44fe7f216946b17d3e3074df3746372703cf24e9127b4c045511456e8e4bf25515fb0a1bb3937676cc305651c5d4fcb6377b0588a4c6a957e748c4c28905d17
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "tslib@npm:2.0.3"
+  checksum: 447bfca5deaa157806c3f77eaba74d05dd0b38b014e47ce79d98b5c77ce7d91b00a687ba13ca1b5a74d35ca1098ac7a072c0a97fad06f0266612f2a03a6c8e8f
   languageName: node
   linkType: hard
 
