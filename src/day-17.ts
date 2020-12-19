@@ -1,5 +1,7 @@
 import { BaseN, CartesianProduct } from 'js-combinatorics';
 
+import { clone } from './helpers';
+
 type Grid3D = number[][][];
 type Grid4D = number[][][][];
 
@@ -11,10 +13,6 @@ const adjacent4D = bubble4D.slice(1);
 
 function countOccupied(layout: Grid3D | Grid4D): number {
   return layout.flat(3).reduce((a, b) => a + b , 0);
-}
-
-function clone<T>(layout: T): T {
-  return JSON.parse(JSON.stringify(layout)) as T;
 }
 
 function locatePoint(layout: Grid3D | Grid4D, coords: number[]): number {
@@ -121,12 +119,12 @@ function space<T = Grid3D>(
   layout: T,
   initialSpace: number[],
   exploreFunc: (current: T, spaceSize: number[]) => T,
-  cycleCount: number,
+  generationCount: number,
 ): T {
-  let cycle = 0;
+  let generation = 0;
   let current = clone(layout);
   let spaceSize = initialSpace.slice();
-  while (cycle++ < cycleCount) {
+  while (generation++ < generationCount) {
     spaceSize = spaceSize.map((c) => c + 2);
     current = exploreFunc(current, spaceSize);
   }

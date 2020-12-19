@@ -1,74 +1,48 @@
+import { BaseN } from 'js-combinatorics';
+
+import { clone, printLayout2D } from './helpers';
+
 type State = 'L' | '#' | '.';
+type Coords = [ number, number ];
 
-function countOccupied(layout: State[][]): number {
-  return layout.reduce(
-    (prev, row) => {
-      const current = row.filter((seat) => seat === '#').length;
-      return prev + current;
-    },
-    0,
-  );
+function countOccupied(layout: (State[] | State | null)[]): number {
+  return layout.flat(1).reduce((a, b) => a + (b === '#' ? 1 : 0), 0);
 }
 
-function clone(layout: State[][]): State[][] { return layout.map((row) => row.slice()); }
-
-const div = '='.repeat(30);
-function printLayout(layout: State[][], generation: number) {
-  // eslint-disable-next-line no-console
-  console.log(
-    `${generation.toString().padStart(30)}\n${div}\n${layout.map((row) => row.join('')).join('\n')}\n${div}\n`,
-  );
-}
-
-interface IAdjacentResult { next: State[]; done: boolean; }
-function adjacentToPoint(
-  layout: State[][],
-  r: number,
-  c: number,
-  amp: number,
-): IAdjacentResult {
-  const bottomEdge = layout.length - 1;
-  const rightEdge = layout[r].length - 1;
-  const yLow = r - amp;
-  const yHigh = r + amp;
-  const xLow = c - amp;
-  const xHigh = c + amp;
-  return {
-    next: [
-      layout[yLow]?.[xLow],
-      layout[yLow]?.[xHigh],
-      layout[yHigh]?.[xLow],
-      layout[yHigh]?.[xHigh],
-      layout[r]?.[xLow],
-      layout[r]?.[xHigh],
-      layout[yLow]?.[c],
-      layout[yHigh]?.[c],
-    ],
-    done: yLow <= 0 && yHigh >= bottomEdge && xLow <= 0 && xHigh >= rightEdge,
-  };
+const cache = new Map<number, number[][]>();
+function getTransforms(amp: number): number[][] {
+  if (!cache.has(amp)) {
+    const [ , ...transforms ] = new BaseN([ 0, amp, -amp ], 2).toArray();
+    cache.set(amp, transforms);
+  }
+  return cache.get(amp)!;
 }
 
 const stopStates = new Set([ '#', 'L' ]);
 function getOccupied(
   layout: State[][],
-  r: number,
-  c: number,
+  [ x, y ]: Coords,
   adjacentFanOut: boolean,
 ): number {
   const found = Array(8).fill(null) as (State | null)[];
   let stop = false;
   let amp = 1;
   while (!stop) {
-    const { next, done } = adjacentToPoint(layout, r, c, amp);
-    next.forEach((position, i) => {
-      if (stopStates.has(position)) {
-        found[i] ??= position;
+    const adjacent = getTransforms(amp);
+    let hit = false;
+    adjacent.forEach(([ dX, dY ], i) => {
+      const position = layout[y + dY]?.[x + dX];
+      if (position != null) {
+        hit = true;
+        if (stopStates.has(position)) {
+          found[i] ??= position;
+        }
       }
     });
     amp += 1;
-    stop = !adjacentFanOut || done;
+    stop = !adjacentFanOut || !hit || !found.some((p) => p == null);
   }
-  return found.filter((seat) => seat === '#').length;
+  return countOccupied(found);
 }
 
 function nature(
@@ -82,14 +56,13 @@ function nature(
   let current = clone(layout);
   while (!done) {
     const next = clone(current);
-    if (print) { printLayout(next, ++generation); }
+    if (print) { printLayout2D(next, ++generation); }
 
     let changed = false;
-    for (let r = 0; r < current.length; r += 1) {
-      const row = current[r];
-      for (let c = 0; c < row.length; c += 1) {
-        let cell = row[c];
-        const occupied = getOccupied(current, r, c, adjacentFanOut);
+    for (let y = 0; y < current.length; y += 1) {
+      for (let x = 0; x < current[y].length; x += 1) {
+        let cell = current[y][x];
+        const occupied = getOccupied(current, [ x, y ], adjacentFanOut);
         switch (cell) {
           case 'L': {
             if (occupied === 0) {
@@ -104,8 +77,8 @@ function nature(
             break;
           }
         }
-        changed ||= cell !== next[r][c];
-        next[r][c] = cell;
+        changed ||= cell !== next[y][x];
+        next[y][x] = cell;
       }
     }
 

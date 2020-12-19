@@ -173,6 +173,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pegjs@npm:^0.10.2":
+  version: 0.10.2
+  resolution: "@types/pegjs@npm:0.10.2"
+  checksum: 2d36c5d1dff86f15d244c95ea035130dd9729954eb4c604e3fc484086c39a4b4046035483a124d69edf48f5471af8430244006a6c76801dd17473aa2cc2cea4e
+  languageName: node
+  linkType: hard
+
 "@types/strip-bom@npm:^3.0.0":
   version: 3.0.0
   resolution: "@types/strip-bom@npm:3.0.0"
@@ -404,12 +411,14 @@ __metadata:
     "@types/chai": ^4.2.14
     "@types/glob": ^7.1.3
     "@types/node": ^14.14.10
+    "@types/pegjs": ^0.10.2
     chai: ^4.2.0
     eslint: ^7.15.0
     eslint-plugin-nwronski: ^3.1.1
     esm: ^3.2.25
     glob: ^7.1.6
     js-combinatorics: ^1.4.5
+    pegjs: ^0.10.0
     ts-node-dev: ^1.1.1
     tslib: ^2.0.3
     tslint: ^6.1.3
@@ -2636,6 +2645,15 @@ fsevents@~2.1.2:
   version: 1.1.0
   resolution: "pathval@npm:1.1.0"
   checksum: 31c3fb2b0763f357e2cf4bfd398b7423f2875184b2feebadf85854e860a06fb057a485add5450f6661c2282063e62e1eb22abb4e1241a461a3795dae18667fda
+  languageName: node
+  linkType: hard
+
+"pegjs@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "pegjs@npm:0.10.0"
+  bin:
+    pegjs: bin/pegjs
+  checksum: 3d3c011257f35f33357185489f12e99150b25d1f6bd9fcc62d2cee62ece97749d46549dead090b4e16e1173a1ce3264989d56cb4454ae9045512debfdd66d09e
   languageName: node
   linkType: hard
 

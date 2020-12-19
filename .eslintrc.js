@@ -9,6 +9,7 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies':'off',
     'import/order': 'off',
+    'prefer-const': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'complexity': 'off',

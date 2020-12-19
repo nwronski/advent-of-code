@@ -1,14 +1,4 @@
-function getPermutations<T>(items: T[], count: number): T[][] {
-  function traverse(results: T[][], curCount: number, totalCount: number): T[][] {
-    if (curCount === totalCount) { return results; }
-    for (let i = 0, len = results.length; i < len; i += 1) {
-      const nextItem = results.shift()!;
-      results.push(...items.map((item) => ([ ...nextItem, item ])));
-    }
-    return traverse(results, curCount + 1, totalCount);
-  }
-  return traverse(items.map((val: T): T[] => ([ val ])), 1, count);
-}
+import { BaseN } from 'js-combinatorics';
 
 function getSum(mem: Map<unknown, number>) {
   return Array.from(mem.values()).reduce((prev, cur) => prev + cur, 0);
@@ -18,7 +8,7 @@ function getMask(line: string) {
   const [ , mask ] = /mask = ([01X]+)$/.exec(line)!;
   return mask;
 }
-function getOperation(line: string) {
+function getOperation(line: string): [ string, string ] {
   const [ , loc, val ] = /mem\[(\d+)\]\s=\s(\d+)$/.exec(line)!;
   return [ loc, val ];
 }
@@ -46,23 +36,39 @@ function applyMask(
   return result;
 }
 
+function loadMemory(
+  instructions: string[],
+  loadOperation: (op: [ string, string ], mask: string) => Generator<[ number, number ], void>,
+): Map<number, number> {
+  const memory = new Map<number, number>();
+  let mask: string;
+  for (const instruction of instructions) {
+    if (instruction.startsWith('mask')) {
+      mask = getMask(instruction);
+      continue;
+    }
+    const operation = getOperation(instruction);
+    for (const [ loc, value ] of loadOperation(operation, mask!)) {
+      memory.set(loc, value);
+    }
+  }
+  return memory;
+}
+
 /**
  * Day 14
  * yarn start 14
  * @see {@link https://adventofcode.com/2020/day/14}
  */
 export function solution(contents: string) {
-  const lines = contents.split(/\n/);
-  const memory = new Map();
-  let mask: string;
-  for (const line of lines) {
-    if (line.startsWith('mask')) {
-      mask = getMask(line);
-    } else {
-      const [ loc, value ] = getOperation(line);
+  const instructions = contents.split(/\n/);
+
+  const memory1 = loadMemory(
+    instructions,
+    function * ([ loc, value ]: [ string, string ], mask: string) {
       const nextValue = applyMask(
         strIntToBinStr(value),
-        mask!,
+        mask,
         (nextChar: string, maskChar: string) => {
           switch (maskChar) {
             case '0':
@@ -75,26 +81,20 @@ export function solution(contents: string) {
           return null;
         },
       );
-      memory.set(parseInt(loc, 10), parseInt(nextValue, 2));
-    }
-  }
-  const part1 = getSum(memory);
+      yield [ parseInt(loc, 10), parseInt(nextValue, 2) ];
+    },
+  );
+  const part1 = getSum(memory1);
 
-  memory.clear();
-  for (const line of lines) {
-    if (line.startsWith('mask')) {
-      mask = getMask(line);
-    } else {
-      const operation = getOperation(line);
-      const loc = strIntToBinStr(operation[0]);
-      const value = parseInt(operation[1], 10);
-      const permCount = (mask!.match(/X/g) ?? []).length;
-      const perms = getPermutations([ '0', '1' ], permCount);
-      for (const perm of perms) {
+  const memory2 = loadMemory(
+    instructions,
+    function * ([ loc, value ]: [ string, string ], mask: string) {
+      const permCount = (mask.match(/X/g) ?? []).length;
+      for (const perm of new BaseN([ '0', '1' ], permCount)) {
         let x = 0;
         const nextLoc = applyMask(
-          loc,
-          mask!,
+          strIntToBinStr(loc),
+          mask,
           (_nextChar: string, maskChar: string) => {
             switch (maskChar) {
               case 'X': {
@@ -107,10 +107,11 @@ export function solution(contents: string) {
             return null;
           },
         );
-        memory.set(parseInt(nextLoc, 2), value);
+        yield [ parseInt(nextLoc, 2), parseInt(value, 10) ];
       }
-    }
-  }
-  const part2 = getSum(memory);
+    },
+  );
+  const part2 = getSum(memory2);
+
   return { part1, part2 };
 }
