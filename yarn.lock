@@ -378,6 +378,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yomguithereal/helpers@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@yomguithereal/helpers@npm:1.1.1"
+  checksum: 5c160ec889a07d04e017cea19b3d007f7e0a8e2e5b936bf8b17f3f832c2fe2bc05b2880ecb3b36513cb9655bd21d9b7f3207077fe0e15e4d547744f98626479d
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:1":
   version: 1.1.1
   resolution: "abbrev@npm:1.1.1"
@@ -417,7 +424,14 @@ __metadata:
     eslint-plugin-nwronski: ^3.1.1
     esm: ^3.2.25
     glob: ^7.1.6
+    graphology: ^0.19.2
+    graphology-operators: ^1.4.0
+    graphology-shortest-path: ^1.4.0
+    graphology-simple-path: ^0.1.0
+    graphology-traversal: ^0.2.0
+    graphology-types: ^0.19.0
     js-combinatorics: ^1.4.5
+    mnemonist: ^0.38.1
     pegjs: ^0.10.0
     ts-node-dev: ^1.1.1
     tslib: ^2.0.3
@@ -1512,6 +1526,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"events@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "events@npm:3.2.0"
+  checksum: 6ea52b160c2dfbe060feb2388d3d6d8b76a58779c2b14d66d96fdfcb255ccecaac11464634af4e5a7ba272b5412de929ead65d24cd203f3ff8ca881d4ba3796b
+  languageName: node
+  linkType: hard
+
 "extend@npm:~3.0.2":
   version: 3.0.2
   resolution: "extend@npm:3.0.2"
@@ -1760,6 +1781,110 @@ fsevents@~2.1.2:
   version: 4.2.4
   resolution: "graceful-fs@npm:4.2.4"
   checksum: d095ee4dc6eacc76814cd52d5d185b860119378a6fd4888e7d4e94983095c54d4f6369942a5e3d759cdbdd4e3ee7eaeb27a39ff938c6ee4610894fd9de46b6cb
+  languageName: node
+  linkType: hard
+
+"graphology-indices@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "graphology-indices@npm:0.8.0"
+  dependencies:
+    graphology-types: ^0.16.0
+    graphology-utils: ^1.7.0
+    mnemonist: ^0.35.0
+  checksum: e01e48a176da43a81f73c858601a918b13927a3908910b5e847417350e005faac20bc7aeb9629dced7b47214a1207b519b2b9de5962410e01e50b78936c30975
+  languageName: node
+  linkType: hard
+
+"graphology-operators@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "graphology-operators@npm:1.4.0"
+  dependencies:
+    graphology-utils: ^2.0.0
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: d44c91ccf5b1410e40eb2185b624b7f0aea4b36fc81622265eb2593a147a32210c6eb2f1a3170f2f6cbd3df53f5d3133a9b41ef9ac7d49afd598c96ac351cd44
+  languageName: node
+  linkType: hard
+
+"graphology-shortest-path@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "graphology-shortest-path@npm:1.4.0"
+  dependencies:
+    "@yomguithereal/helpers": ^1.1.1
+    graphology-indices: ^0.8.0
+    graphology-utils: ^1.8.0
+    mnemonist: ^0.38.0
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: 74dd223793ec3378932e4abf2ac5ebfcf4af06f3e86ecc5efa2793de8362068afe89a00fdf912c191b4e9a09bda3bfb281b0cbf1d5c024ce5f93a7fb0324ac2e
+  languageName: node
+  linkType: hard
+
+"graphology-simple-path@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "graphology-simple-path@npm:0.1.0"
+  dependencies:
+    graphology-utils: ^1.8.0
+    mnemonist: ^0.38.0
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: 2baa5ccd3032a41faf2491a067525cd1afb0a1b2e333fb4186e8c8461c9d0601f0cacaa2ac539a023b5786447ac7e59abc19156cac26f4dbd61a9bf037e1dc12
+  languageName: node
+  linkType: hard
+
+"graphology-traversal@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "graphology-traversal@npm:0.2.0"
+  dependencies:
+    graphology-utils: ^1.8.0
+    mnemonist: ^0.38.0
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: ccf0df7fa51b88fe95f94d2d0f5a56099bf89e43054a42074fc8bbfec27a2e36a03f1cb1bca6e1fb8627f96edb60bd307e6780e0895ee89c9aa4eccdf95cd260
+  languageName: node
+  linkType: hard
+
+"graphology-types@npm:^0.16.0":
+  version: 0.16.0
+  resolution: "graphology-types@npm:0.16.0"
+  checksum: c1ea2b87f215b1f76c7c3855c952936b7f382b11800187a702fe12f305a982a84871701eda7250d9772a924c2f4792f928222809f15b763f1ab9377925a36df2
+  languageName: node
+  linkType: hard
+
+"graphology-types@npm:^0.19.0":
+  version: 0.19.0
+  resolution: "graphology-types@npm:0.19.0"
+  checksum: 595cf9e413e8f09041f2c7b4feec70651562b4a1388fa7bf5a8213fa1cd6f137e9cf87a7ad3ec58e439b020bfb436e1e24db3a3f8dfb7fe3ca6ea5aa683e07a5
+  languageName: node
+  linkType: hard
+
+"graphology-utils@npm:^1.7.0, graphology-utils@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "graphology-utils@npm:1.8.0"
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: c800c2b40bcac5d2644232e861623167183894b5bccb51714dd19656c0fbb3e0a89f1c8bc0d25d436b6e088320574a874c665b005d7cfd1c5d135cf01c2b159f
+  languageName: node
+  linkType: hard
+
+"graphology-utils@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "graphology-utils@npm:2.0.0"
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: 2ac5eeb055e3112ba479d0a481ae3d27317e38f6c7ffed50706874fd55cd5cb85e51eca0efb27fe37c9860492982b6b8d18a0bd29cfc5f76e55e28f5a7992b3e
+  languageName: node
+  linkType: hard
+
+"graphology@npm:^0.19.2":
+  version: 0.19.2
+  resolution: "graphology@npm:0.19.2"
+  dependencies:
+    events: ^3.2.0
+    obliterator: ^1.6.1
+  peerDependencies:
+    graphology-types: ">=0.19.0"
+  checksum: e72125d77c45e9cc03f5d5ca08e3e92e25fc9e91ca7e77987d12e2eea1d773799e9218912b1ecdf770195d45136f0848cfb549b87ed460177e78525a58c1334f
   languageName: node
   linkType: hard
 
@@ -2352,6 +2477,24 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"mnemonist@npm:^0.35.0":
+  version: 0.35.0
+  resolution: "mnemonist@npm:0.35.0"
+  dependencies:
+    obliterator: ^1.6.1
+  checksum: 17fe983cd78a6c1177f9909c205e35ac195122f1f86bb9d6bcfc2e7127e3aca638a1779e63815dcdc6d403bf164d70b10651b62498c86fdee7fe64d41705e2e7
+  languageName: node
+  linkType: hard
+
+"mnemonist@npm:^0.38.0, mnemonist@npm:^0.38.1":
+  version: 0.38.1
+  resolution: "mnemonist@npm:0.38.1"
+  dependencies:
+    obliterator: ^1.6.1
+  checksum: 14631ad28e929bed951ee5f9e0e2d01538ac865691e9728fd7688186c19000e6ed2fc8735fba588090971739e6b821de172f10cd084f76c18d27aeab5bca8e9a
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -2515,6 +2658,13 @@ fsevents@~2.1.2:
     es-abstract: ^1.18.0-next.1
     has: ^1.0.3
   checksum: d9e492095a46caa1531d5917ba707967ae882193b6e0b318d56f5f867b756ad62a3e600fae434e9d0b6a33f1a35d7a604631d6db3f876266c7802c5b63923f16
+  languageName: node
+  linkType: hard
+
+"obliterator@npm:^1.6.1":
+  version: 1.6.1
+  resolution: "obliterator@npm:1.6.1"
+  checksum: c2a85c1c77c7224b9670b0a8229dcefaf8378e9f87f5e4b0bb900eef38370b3025e6041f1184377844d02bf92df8ec60b9a3d12964782153842be49bb153d1fb
   languageName: node
   linkType: hard
 
