@@ -28,9 +28,9 @@ export const ANSWERS = new Map<number, IAnswers>([
   [ 19, { part1: 208, part2: 316 } ],
   [ 20, { part1: 5966506063747, part2: 1714 } ],
   [ 21, { part1: 2584, part2: 'fqhpsl,zxncg,clzpsl,zbbnj,jkgbvlxh,dzqc,ppj,glzb' } ],
+  [ 22, { part1: 32448, part2: 32949 } ],
 
   // ---------------------------------
-  [ 22, { part1: 111, part2: 222 } ],
   [ 23, { part1: 111, part2: 222 } ],
   [ 24, { part1: 111, part2: 222 } ],
   [ 25, { part1: 111, part2: 222 } ],
