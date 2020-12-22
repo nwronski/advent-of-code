@@ -1,6 +1,6 @@
 export interface IAnswers extends Record<string, unknown> {
-  part1: number | bigint;
-  part2: number | bigint;
+  part1: number | bigint | string;
+  part2: number | bigint | string;
 }
 export type SolutionFunc = (contents: string) => IAnswers;
 export interface ISolutionFile { solution: SolutionFunc; }
@@ -27,9 +27,9 @@ export const ANSWERS = new Map<number, IAnswers>([
   [ 18, { part1: 11004703763391, part2: 290726428573651 } ],
   [ 19, { part1: 208, part2: 316 } ],
   [ 20, { part1: 5966506063747, part2: 1714 } ],
+  [ 21, { part1: 2584, part2: 'fqhpsl,zxncg,clzpsl,zbbnj,jkgbvlxh,dzqc,ppj,glzb' } ],
 
   // ---------------------------------
-  [ 21, { part1: 111, part2: 222 } ],
   [ 22, { part1: 111, part2: 222 } ],
   [ 23, { part1: 111, part2: 222 } ],
   [ 24, { part1: 111, part2: 222 } ],
