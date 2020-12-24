@@ -30,8 +30,8 @@ export const ANSWERS = new Map<number, IAnswers>([
   [ 21, { part1: 2584, part2: 'fqhpsl,zxncg,clzpsl,zbbnj,jkgbvlxh,dzqc,ppj,glzb' } ],
   [ 22, { part1: 32448, part2: 32949 } ],
   [ 23, { part1: '24798635', part2: 12757828710 } ],
+  [ 24, { part1: 469, part2: 4353 } ],
 
   // ---------------------------------
-  [ 24, { part1: 111, part2: 222 } ],
   [ 25, { part1: 111, part2: 222 } ],
 ]);
