@@ -20,7 +20,7 @@ export function solution(contents: string) {
         .reduce(
           (prev, cur) => ({
             ...prev,
-            [ cur.groups!.fieldKey ]: cur.groups!.fieldValue,
+            [ cur.groups.fieldKey ]: cur.groups.fieldValue,
           }),
           {} as Record<string, string>,
         );

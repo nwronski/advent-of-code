@@ -48,7 +48,7 @@ class FancyCircle {
       let cursor = start;
       yield start;
       while (cursor.next !== start) {
-        cursor = cursor.next!;
+        cursor = cursor.next;
         yield cursor;
       }
     }
@@ -59,14 +59,14 @@ class FancyCircle {
 
 function game(circle: FancyCircle, roundCount: number): FancyCircle {
   let round = 0;
-  let current: FancyCircleNode = circle.head!;
+  let current: FancyCircleNode = circle.head;
 
   while (round++ < roundCount) {
     let cursor = current.value;
 
     const first = current.next;
-    const second = current.next!.next!;
-    const third = current.next!.next!.next!;
+    const second = current.next.next;
+    const third = current.next.next.next;
     const pickup = [ first, second, third ] as const;
 
     let destination: FancyCircleNode | null = null;
@@ -81,7 +81,7 @@ function game(circle: FancyCircle, roundCount: number): FancyCircle {
     current.next = tail;
     third.next = node;
 
-    current = current.next!;
+    current = current.next;
   }
 
   return circle;
@@ -106,7 +106,7 @@ export function solution(contents: string) {
   }
   game(circle2, 10_000_000);
   const one = circle2.get(1);
-  const part2 = one.next!.value * one.next!.next!.value;
+  const part2 = one.next.value * one.next.next.value;
 
   return { part1, part2 };
 }

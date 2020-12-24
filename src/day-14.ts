@@ -48,7 +48,7 @@ function loadMemory(
       continue;
     }
     const operation = getOperation(instruction);
-    for (const [ loc, value ] of loadOperation(operation, mask!)) {
+    for (const [ loc, value ] of loadOperation(operation, mask)) {
       memory.set(loc, value);
     }
   }

@@ -63,7 +63,7 @@ export function solution(contents: string) {
     allergen: node,
     recipes: allRecipes
       .map(([ recipe ]) => simple.hasEdge(recipe, node) ? recipe : null)
-      .filter((recipe) => recipe != null) as string[],
+      .filter((recipe) => recipe != null),
   }));
   for (const [ node ] of allIngredients) {
     for (const { allergen, recipes } of allergenMap) {

@@ -58,7 +58,7 @@ function boatyBoat(
 export function solution(contents: string) {
   const directions = contents.split(/\n/).map((line: string): [ Direction, number ] => {
     const { groups } = /(?<direction>[NSEWLRF])(?<value>\d+)/i.exec(line)!;
-    return [ groups!.direction as Direction, parseInt(groups!.value, 10) ];
+    return [ groups.direction as Direction, parseInt(groups.value, 10) ];
   });
 
   const { origin: origin1 } = boatyBoat(

@@ -34,8 +34,8 @@ export function solution(contents: string) {
     .map((line): IInstruction => {
       const { groups } = /(?<instruction>\w+)\s(?<value>[+-]\d+)/.exec(line)!;
       return {
-        instruction: groups!.instruction,
-        value: parseInt(groups!.value, 10),
+        instruction: groups.instruction,
+        value: parseInt(groups.value, 10),
       };
     });
   const { acc: part1 } = run(lines);

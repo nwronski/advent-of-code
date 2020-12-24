@@ -62,12 +62,12 @@ export function solution(contents: string) {
   const childPattern = /(?<childCount>[\d]+) (?<childColor>[\S]+ [\S]+) bag[s]?/g;
   const bags = new Bagman();
   for (const line of lines) {
-    const parentColor = parentPattern.exec(line)!.groups!.parentColor;
+    const parentColor = parentPattern.exec(line)!.groups.parentColor;
     const parent = bags.get(parentColor);
     for (const { groups } of line.matchAll(childPattern)) {
       parent.add(
-        bags.get(groups!.childColor),
-        parseInt(groups!.childCount, 10),
+        bags.get(groups.childColor),
+        parseInt(groups.childCount, 10),
       );
     }
   }
