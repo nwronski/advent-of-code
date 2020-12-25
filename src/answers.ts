@@ -31,7 +31,5 @@ export const ANSWERS = new Map<number, IAnswers>([
   [ 22, { part1: 32448, part2: 32949 } ],
   [ 23, { part1: '24798635', part2: 12757828710 } ],
   [ 24, { part1: 469, part2: 4353 } ],
-
-  // ---------------------------------
-  [ 25, { part1: 111, part2: 222 } ],
+  [ 25, { part1: 5414549, part2: 0 } ],
 ]);

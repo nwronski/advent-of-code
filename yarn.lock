@@ -427,11 +427,8 @@ __metadata:
     graphology: ^0.19.2
     graphology-operators: ^1.4.0
     graphology-shortest-path: ^1.4.0
-    graphology-simple-path: ^0.1.0
-    graphology-traversal: ^0.2.0
     graphology-types: ^0.19.0
     js-combinatorics: ^1.4.5
-    mnemonist: ^0.38.1
     pegjs: ^0.10.0
     ts-node-dev: ^1.1.1
     tslib: ^2.0.3
@@ -1820,30 +1817,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"graphology-simple-path@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "graphology-simple-path@npm:0.1.0"
-  dependencies:
-    graphology-utils: ^1.8.0
-    mnemonist: ^0.38.0
-  peerDependencies:
-    graphology-types: ">=0.19.0"
-  checksum: 2baa5ccd3032a41faf2491a067525cd1afb0a1b2e333fb4186e8c8461c9d0601f0cacaa2ac539a023b5786447ac7e59abc19156cac26f4dbd61a9bf037e1dc12
-  languageName: node
-  linkType: hard
-
-"graphology-traversal@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "graphology-traversal@npm:0.2.0"
-  dependencies:
-    graphology-utils: ^1.8.0
-    mnemonist: ^0.38.0
-  peerDependencies:
-    graphology-types: ">=0.19.0"
-  checksum: ccf0df7fa51b88fe95f94d2d0f5a56099bf89e43054a42074fc8bbfec27a2e36a03f1cb1bca6e1fb8627f96edb60bd307e6780e0895ee89c9aa4eccdf95cd260
-  languageName: node
-  linkType: hard
-
 "graphology-types@npm:^0.16.0":
   version: 0.16.0
   resolution: "graphology-types@npm:0.16.0"
@@ -2486,7 +2459,7 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"mnemonist@npm:^0.38.0, mnemonist@npm:^0.38.1":
+"mnemonist@npm:^0.38.0":
   version: 0.38.1
   resolution: "mnemonist@npm:0.38.1"
   dependencies:

@@ -21,10 +21,7 @@
     "graphology": "^0.19.2",
     "graphology-operators": "^1.4.0",
     "graphology-shortest-path": "^1.4.0",
-    "graphology-simple-path": "^0.1.0",
-    "graphology-traversal": "^0.2.0",
     "js-combinatorics": "^1.4.5",
-    "mnemonist": "^0.38.1",
     "pegjs": "^0.10.0",
     "tslib": "^2.0.3"
   },
