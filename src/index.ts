@@ -1,17 +1,20 @@
 import { expect } from 'chai';
-import { readFile } from 'fs';
+import { readFile } from 'fs/promises';
 import glob from 'glob';
 import { resolve } from 'path';
 import { promisify } from 'util';
+import parse from 'yargs-parser';
 
-import { ANSWERS, IRunResult, ISolutionFile } from './answers';
+import { IAnswerFile, IRunResult, ISolutionFile } from './types';
 
-const readFileAsync = promisify(readFile);
 const globAsync = promisify(glob);
 
-async function run(day: number): Promise<IRunResult> {
-  const { solution } = await import(`./day-${day}`) as ISolutionFile;
-  const contents = await readFileAsync(resolve(`./input/day-${day}.txt`), 'utf-8');
+const CURRENT_YEAR = 2021;
+
+async function run(day: number, year: number): Promise<IRunResult> {
+  const { solution } = await import(`./${year}/day-${day}`) as ISolutionFile;
+  const contents = await readFile(resolve(`./input/${year}/day-${day}.txt`), 'utf-8');
+  const { ANSWERS } = await import(`./${year}/answers`) as IAnswerFile;
   const expected = ANSWERS.get(day);
   const result = solution(contents.trim());
   if (expected != null) {
@@ -23,13 +26,18 @@ async function run(day: number): Promise<IRunResult> {
       );
     }
   }
-  return { day, ...result };
+  return { year, day, ...result };
 }
 
-async function cli(arg: string) {
-  let days = [ arg ];
-  if (arg === '--all') {
-    const files = await globAsync('./src/day-*.ts');
+export interface IOptions {
+  year: number;
+  _: string;
+}
+
+async function cli({ year, _: [ day ] }: IOptions) {
+  let days = [ day ];
+  if (day == null) {
+    const files = await globAsync(`./src/${year}/day-*.ts`);
     days = files.map((file) => {
       const [ , dayStr ] = /day-(\d+)\.ts$/.exec(file)!;
       return dayStr;
@@ -37,12 +45,16 @@ async function cli(arg: string) {
   }
 
   const dayNumbers = days.map((d) => parseInt(d, 10)).sort((a, b) => a - b);
-  for (const day of dayNumbers) {
-    const result = await run(day);
+  for (const dayNum of dayNumbers) {
+    const result = await run(dayNum, year);
     // eslint-disable-next-line no-console
     console.log(result);
   }
 }
 
+const options = parse(
+  process.argv.slice(2),
+  { default: { year: CURRENT_YEAR }, alias: { year: [ 'y' ] } },
+) as unknown as IOptions;
 // eslint-disable-next-line no-console
-cli(process.argv[2]).catch(console.error);
+cli(options).catch(console.error);
